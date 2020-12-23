@@ -53,6 +53,7 @@ node_modules/
 
 # Ignore precompiled javascript packs
 /public/packs
+*/public/packs
 /public/packs-test
 /public/assets
 
@@ -127,6 +128,9 @@ UserInterfaceState.xcuserstate
 .Trashes
 ehthumbs.db
 Thumbs.db
-/public/packs
-/public/packs-test
 /node_modules
+/public/cache
+/public/stylesheets/compiled
+/public/system/*
+/public/assets/*
+!/public/assets/.keep

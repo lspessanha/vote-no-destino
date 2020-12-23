@@ -12,3 +12,10 @@ import "bootstrap"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+document.addEventListener("turbolinks:load", function () {
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+    $('[data-toggle="popover"]').popover()
+  })
+})
