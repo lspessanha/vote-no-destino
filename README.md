@@ -13,12 +13,12 @@ docker-compose run web rails db:create
 ```
 
 Executando as migrates
-### Migrates em desenvolvimento
+#### Migrates em desenvolvimento
 ```
 docker-compose run web rails db:migrate
 ```
 
-### Migrates em produção
+#### Migrates em produção
 ```
 docker-compose run web-production rails db:migrate
 ```
