@@ -21,7 +21,7 @@ default: &default
 
 development:
   <<: *default
-  database: <%= ENV["DB_DATABASE_HEROKU"] || vote_no_destino_development %>
+  database: <%= ENV["DB_DATABASE_HEROKU"] || "vote_no_destino_development" %>
   username: <%= ENV["DB_USER"] %>
   password: <%= ENV["DB_USER_PASSWORD"] %>
 
@@ -54,6 +54,6 @@ test:
 #
 production:
   <<: *default
-  database: <%= ENV["DB_DATABASE_HEROKU"] || vote_no_destino_production %>
+  database: <%= ENV["DB_DATABASE_HEROKU"] || "vote_no_destino_production" %>
   username: <%= ENV["DB_USER"] %>
   password: <%= ENV["DB_USER_PASSWORD"] %>

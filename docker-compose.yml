@@ -37,7 +37,7 @@ services:
       - vote_no_destino_db
     links:
       - vote_no_destino_db
-  
+
   web-production:
     build: .
     container_name: web-production
