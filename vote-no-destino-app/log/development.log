@@ -1,0 +1,25 @@
+Started GET "/" for 172.22.0.1 at 2020-12-23 00:17:55 -0300
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (3.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by DestinationsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering destinations/index.html.erb within layouts/application
+  [1m[36mDestination Load (5.0ms)[0m  [1m[34mSELECT `destinations`.* FROM `destinations`[0m
+  ↳ app/views/destinations/index.html.erb:13
+  Rendered destinations/index.html.erb within layouts/application (Duration: 45.1ms | Allocations: 4044)
+  Rendered layout layouts/application.html.erb (Duration: 891.9ms | Allocations: 22958)
+Completed 200 OK in 1068ms (Views: 922.9ms | ActiveRecord: 9.3ms | Allocations: 29549)
+
+
+Started GET "/vote-no-destino" for 172.22.0.1 at 2020-12-23 00:18:06 -0300
+Cannot render console from 172.22.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by DestinationsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering destinations/index.html.erb within layouts/application
+  [1m[36mDestination Load (2.5ms)[0m  [1m[34mSELECT `destinations`.* FROM `destinations`[0m
+  ↳ app/views/destinations/index.html.erb:13
+  Rendered destinations/index.html.erb within layouts/application (Duration: 14.6ms | Allocations: 791)
+  Rendered layout layouts/application.html.erb (Duration: 54.3ms | Allocations: 2261)
+Completed 200 OK in 61ms (Views: 56.3ms | ActiveRecord: 2.5ms | Allocations: 2670)
+
+

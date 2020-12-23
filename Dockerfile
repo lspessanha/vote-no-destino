@@ -1,5 +1,7 @@
 FROM ruby:2.7.0
 
+RUN apt-get update && apt-get install -y nodejs npm && npm install --global yarn
+
 WORKDIR /app
 
 COPY ./vote-no-destino-app/Gemfile ./vote-no-destino-app/Gemfile.lock ./
@@ -7,6 +9,8 @@ COPY ./vote-no-destino-app/Gemfile ./vote-no-destino-app/Gemfile.lock ./
 RUN bundle install
 
 COPY ./vote-no-destino-app .
+
+RUN rails webpacker:install
 
 EXPOSE 3000
 
