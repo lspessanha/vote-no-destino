@@ -65,3 +65,69 @@ yarn-debug.log*
 # Ignore uploaded files in development
 /storage/*
 !/storage/.keep
+
+# Ignore all logfiles and tempfiles.
+*.tmp
+*.tmp.*
+log.txt
+npm-debug.log*
+
+.byebug_history
+
+# Specifies intentionally untracked files to ignore when using Git
+*~
+*.sw[mnpcod]
+*.sublime-project
+*.sublime-workspace
+.vscode/
+
+.idea/
+.ionic/
+.sourcemaps/
+.sass-cache/
+.tmp/
+.versions/
+coverage/
+www/
+tmp/
+temp/
+platforms/
+plugins/
+plugins/android.json
+plugins/ios.json
+$RECYCLE.BIN/
+
+UserInterfaceState.xcuserstate
+
+### Compiled source ###
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+### Packages ###
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+### Logs ###
+*.log
+
+### OS generated files ###
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+/public/packs
+/public/packs-test
+/node_modules
