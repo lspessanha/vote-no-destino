@@ -16,14 +16,14 @@ default: &default
   username: root
   password: root
   socket: /tmp/mysql.sock
+  host: <%= ENV["DB_HOST"] %>
+  port: 3306
 
 development:
   <<: *default
-  database: vote_no_destino_development
-  host: <%= ENV["DB_HOST"] %>
+  database: <%= ENV["DB_DATABASE_HEROKU"] || vote_no_destino_development %>
   username: <%= ENV["DB_USER"] %>
   password: <%= ENV["DB_USER_PASSWORD"] %>
-  port: 3306
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -54,6 +54,6 @@ test:
 #
 production:
   <<: *default
-  database: vote_no_destino_production
-  username: vote_no_destino
-  password: <%= ENV['VOTE_NO_DESTINO_DATABASE_PASSWORD'] %>
+  database: <%= ENV["DB_DATABASE_HEROKU"] || vote_no_destino_production %>
+  username: <%= ENV["DB_USER"] %>
+  password: <%= ENV["DB_USER_PASSWORD"] %>
