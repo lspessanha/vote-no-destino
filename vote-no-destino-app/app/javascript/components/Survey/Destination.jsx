@@ -1,22 +1,26 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
 
-const Destination = props => (
-  <>
-    <h1>Vote no seu destino!</h1>
-    {props.destinations.map((val) => 
-      <p>{val.destination_name}</p>
-    )}
-  </>
-)
+export default class Destination extends React.Component {  
+  constructor(props) {
+    super(props);
 
-Destination.defaultProps = {
-  destinations: []
+    this.state = {
+      destinations: []
+    };
+  }
+
+  componentDidMount() {
+    this.setState({ destinations: this.props.destinations })
+  }
+
+  render() {
+    return (
+      <>
+        <h1>Vote no seu destino!</h1>
+        {this.state.destinations.map((val) =>
+          <p>{val.destination_name}</p>
+        )}
+      </>
+    );
+  }
 }
-
-Destination.propTypes = {
-  name: PropTypes.array
-}
-
-export default Destination

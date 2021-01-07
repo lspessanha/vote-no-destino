@@ -29,3 +29,12 @@ Para subir o projeto, execute:
 docker-compose up web
 ```
 Utilize a flag '-d' para executar em background.
+
+
+## Realizando o Deploy
+---
+
+Em produção, execute o script:
+```
+./deploy_production.sh
+```
