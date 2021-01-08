@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { MultiStepForm, Step } from 'react-multi-form';
+import RadioOptions from '../base/RadioOptions';
 
 export default class Destination extends Component {  
   constructor(props) {
@@ -17,11 +18,23 @@ export default class Destination extends Component {
     this.setState({ destinations: this.props.destinations, loaded: true })
   }
 
-  voteDestiny = (event) => {
-    console.log(event.target.value);
+  selectedDestination = (event) => {
+    const destinyValue = event.target.value;
+
+    if (this.state.destinationsVoted.length === 0) return this.setState({ destinationsVoted: [destinyValue] });
+    if (this.state.destinationsVoted.length < this.state.currentStep) return this.setState(prevState => ({ destinationsVoted: [...prevState.destinationsVoted, destinyValue] }));
+
+    let destinationsVoted = this.state.destinationsVoted;
+    destinationsVoted[destinationsVoted.length - 1] = destinyValue;
+
+    this.setState({ destinationsVoted: destinationsVoted });
   }
 
-  setStep = (step) => this.setState({currentStep: step});
+  setStep = (step) => {
+    if (this.state.destinationsVoted.length < this.state.currentStep) return alert('Selecione um destino.');
+    
+    this.setState({currentStep: step});
+  }
 
   sendSurvey = () => console.log("Enviar votação");
 
@@ -36,42 +49,36 @@ export default class Destination extends Component {
       multiStepForm = (
         <div className="text-center">
           <p className="lead">Qual dos destinos você prefere?</p>
-          <MultiStepForm activeStep={this.state.currentStep}>
+          <MultiStepForm activeStep={this.state.currentStep} accentColor={'#007bff'}>
             <Step>
-              <div onChange={this.voteDestiny.bind(this)}>
-                <div className="form-check form-check-inline">
-                  <input className="form-check-input" type="radio" name="destiny" id={`destiny${this.state.destinations[0].id}`} value={this.state.destinations[0].id} />
-                  <label className="form-check-label" htmlFor={`destiny${this.state.destinations[0].id}`}>{this.state.destinations[0].destination_name}</label>
-                </div>
-                <div className="form-check form-check-inline">
-                  <input className="form-check-input" type="radio" name="destiny" id={`destiny${this.state.destinations[1].id}`} value={this.state.destinations[1].id} />
-                  <label className="form-check-label" htmlFor={`destiny${this.state.destinations[1].id}`}>{this.state.destinations[1].destination_name}</label>
-                </div>
-              </div>
+              <RadioOptions
+                firstOption={this.state.destinations[0]}
+                secondOption={this.state.destinations[1]}
+                destinations={this.state.destinations}
+                destinationsVoted={this.state.destinationsVoted}
+                step={1}
+                selectedDestination={this.selectedDestination}
+              />
             </Step>
             <Step>
-              <div onChange={this.voteDestiny.bind(this)}>
-                <div className="form-check form-check-inline">
-                  <input className="form-check-input" type="radio" name="destiny" id={`destiny${this.state.destinations[2].id}`} value={this.state.destinations[2].id} />
-                  <label className="form-check-label" htmlFor={`destiny${this.state.destinations[2].id}`}>{this.state.destinations[2].destination_name}</label>
-                </div>
-                <div className="form-check form-check-inline">
-                  <input className="form-check-input" type="radio" name="destiny" id={`destiny${this.state.destinations[3].id}`} value={this.state.destinations[3].id} />
-                  <label className="form-check-label" htmlFor={`destiny${this.state.destinations[3].id}`}>{this.state.destinations[3].destination_name}</label>
-                </div>
-              </div>
+              <RadioOptions
+                firstOption={this.state.destinations[2]}
+                secondOption={this.state.destinations[3]}
+                destinations={this.state.destinations}
+                destinationsVoted={this.state.destinationsVoted}
+                step={2}
+                selectedDestination={this.selectedDestination.bind(this)}
+              />
             </Step>
             <Step>
-              <div onChange={this.voteDestiny.bind(this)}>
-                <div className="form-check form-check-inline">
-                  <input className="form-check-input" type="radio" name="destiny" id={`destiny${this.state.destinations[4].id}`} value={this.state.destinations[4].id} />
-                  <label className="form-check-label" htmlFor={`destiny${this.state.destinations[4].id}`}>{this.state.destinations[4].destination_name}</label>
-                </div>
-                <div className="form-check form-check-inline">
-                  <input className="form-check-input" type="radio" name="destiny" id={`destiny${this.state.destinations[0].id}`} value={this.state.destinations[0].id} />
-                  <label className="form-check-label" htmlFor={`destiny${this.state.destinations[0].id}`}>{this.state.destinations[0].destination_name}</label>
-                </div>
-              </div>
+              <RadioOptions
+                firstOption={this.state.destinations[4]}
+                secondOption={parseInt(this.state.destinationsVoted[0]) === 2 ? this.state.destinations[0] : this.state.destinations[1]}
+                destinations={this.state.destinations}
+                destinationsVoted={this.state.destinationsVoted}
+                step={3}
+                selectedDestination={this.selectedDestination.bind(this)}
+              />
             </Step>
             <Step>
               <div className="w-50 mx-auto">
