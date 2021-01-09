@@ -4,7 +4,9 @@ networks:
     driver: bridge
 services:
   vote_no_destino_db:
-    image: mysql:5.7
+    build:
+      dockerfile: Dockerfile.mysql
+      context: .
     container_name: vote_no_destino_db
     environment:
       MYSQL_DATABASE: vote_no_destino_development
