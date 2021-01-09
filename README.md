@@ -61,4 +61,4 @@ Em produção, execute o script:
 ```
 
 Acesse a aplicação em produção:
-[https://vote-no-destino-2312.herokuapp.com/](https://vote-no-destino-2312.herokuapp.com/)
+[https://vote-no-destino-2312.herokuapp.com/vote-no-destino](https://vote-no-destino-2312.herokuapp.com/vote-no-destino)
