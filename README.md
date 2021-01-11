@@ -47,14 +47,14 @@ docker-compose run web-production rails db:migrate
 
 Criando a base de teste:
 ```
-rails db:drop RAILS_ENV=test
-rails db:create RAILS_ENV=test
-rails db:schema:load RAILS_ENV=test
+docker-compose run web rails db:drop RAILS_ENV=test
+docker-compose run web rails db:create RAILS_ENV=test
+docker-compose run web rails db:schema:load RAILS_ENV=test
 ```
 
 Rodando os testes:
 ```
-RAILS_ENV=test rspec
+docker-compose run -e RAILS_ENV=test web rspec
 ```
 
 ## Realizando o Deploy
