@@ -12,6 +12,19 @@ Criando o Banco de Dados pela primeira vez
 docker-compose run web rails db:create
 ```
 
+Para subir o projeto, execute:
+---
+```
+docker-compose up web
+```
+Utilize a flag '-d' para executar em background.
+
+Caso a aplicação não encontre o Bootstrap, execute o comando:
+---
+```
+docker-compose run web yarn
+```
+
 Executando as migrates
 #### Migrates em desenvolvimento
 ```
@@ -28,14 +41,6 @@ docker-compose run web rails db:seed
 ```
 docker-compose run web-production rails db:migrate
 ```
-
-Para subir o projeto, execute:
----
-```
-docker-compose up web
-```
-Utilize a flag '-d' para executar em background.
-
 
 #### Rodando os testes
 ---
